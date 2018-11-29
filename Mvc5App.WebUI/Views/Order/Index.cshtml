@@ -1,0 +1,84 @@
+﻿@model Mvc5App.WebUI.Models.OrdersViewModel
+@{
+	ViewBag.Title = "Index";
+}
+
+<section id="action" class="py-4 mb-4 bg-light">
+	<div class="container">
+		<div class="row">
+			<!-- MODAL TRIGGER -->
+			<a href="#" class="col-sm-3 btn btn-primary my-4" data-toggle="modal" data-target="#addOrderModal"><i class="fa fa-plus"></i> Add Order</a>
+			@Html.Action("Modal", new { orderId = 0, modalId = "addOrderModal" })
+			<div class="col-md-5 px-0 py-4 ml-auto bg-light float-right">
+				@using (Html.BeginForm("Index", "Order"))
+				{
+					<div class="input-group">
+						<input name="manager" type="text" class="form-control" placeholder="Enter manager name" />
+						<span class="input-group-btn"><button class="btn btn-primary">Search</button></span>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<div class="card">
+	<div class="col-md-6 m-auto">
+		@if (TempData["Message"] != null)
+		{
+			<div class="text-success">@TempData["Message"]</div>
+		}
+	</div>
+	@if (Model.Orders.Count() == 0)
+	{
+		<div class="text-center m-2">
+			@using (Html.BeginForm("SeedDatabase", "Order"))
+			{
+				<div>
+					<h3>No orders</h3>
+					<input class="btn btn-danger" type="submit" name="name" value="Seed Database" />
+				</div>
+			}
+		</div>
+	}
+	else
+	{
+		<table class="table table table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>№</th>
+					<th>Date</th>
+					<th>Shipping</th>
+					<th>Manager</th>
+					<th>Annotation</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			@foreach (var item in Model.Orders)
+			{
+				<tr>
+					<td>@item.Number</td>
+					<td>@item.Date.ToString("d")</td>
+					<td>@((item.Shipping)?.ToString("dd.MM.yyyy"))</td>
+					<td>@item.Manager.Name</td>
+					<td>@item.Annotation</td>
+					<td>
+						<!-- MODAL TRIGGER -->
+						<a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#editOrderModal-@item.OrderId">
+							<i class="fa fa-angle-double-right"></i>
+							Edit
+						</a>
+						@Html.Action("Modal", new { orderId = item.OrderId, modalId = $"editOrderModal-{item.OrderId}" })
+					</td>
+				</tr>
+			}
+		</table>
+	}
+</div>
+
+<div class="mt-4">
+	@Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x, manager = Model.CurrrentManager }))
+</div>
+
+

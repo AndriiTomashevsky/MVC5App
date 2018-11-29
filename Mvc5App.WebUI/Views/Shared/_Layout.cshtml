@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/font-awesome.css" rel="stylesheet" />
+	<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+	<script src="~/Scripts/popper.min.js"></script>
+	<script src="~/Scripts/bootstrap.min.js"></script>
+	<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+	<script src="~/Scripts/jquery.validate.js"></script>
+	<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+	<style type="text/css">
+		.field-validation-error {
+			color: #f00;
+		}
+
+		.validation-summary-errors {
+			color: #f00;
+			font-weight: bold;
+		}
+
+		.input-validation-error {
+			border: 2px solid #f00;
+			background-color: #fee;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("input.single-line").addClass("form-control");
+		});
+	</script>
+	<title>@ViewBag.Title</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+		<div class="container">
+			<a href="#" class="navbar-brand">MVC5App</a>
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item px-2">
+						<a href=@Url.Action("About", "Home")
+						   class="nav-link @((string)Request.RequestContext.RouteData.Values["controller"] == "Home" ? "active":"")">About</a>
+					</li>
+					<li class="nav-item px-2">
+						<a href=@Url.Action("Index", "Order")
+						   class="nav-link @((string)Request.RequestContext.RouteData.Values["controller"] == "Order" ? "active":"")">Orders</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<header id="main-header" class="py-2 bg-primary text-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-dark">
+					<h1>
+						<i class="fa @((string)Request.RequestContext.RouteData.Values["controller"] == "Home" ? "fa-info-circle":"fa-cart-arrow-down") ">
+						</i> @((string)Request.RequestContext.RouteData.Values["controller"] == "Home" ? "About" : "Orders")
+					</h1>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					@RenderBody()
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+</body>
+
+</html>

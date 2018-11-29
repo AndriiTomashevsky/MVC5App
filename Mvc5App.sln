@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5App.Domain", "Mvc5App.Domain\Mvc5App.Domain.csproj", "{D81D5A4B-4D2A-482C-B935-7B5DD9D214A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5App.WebUI", "Mvc5App.WebUI\Mvc5App.WebUI.csproj", "{6978FD21-979A-4D95-B4E3-3A0AC7BE9429}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D81D5A4B-4D2A-482C-B935-7B5DD9D214A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81D5A4B-4D2A-482C-B935-7B5DD9D214A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81D5A4B-4D2A-482C-B935-7B5DD9D214A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81D5A4B-4D2A-482C-B935-7B5DD9D214A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6978FD21-979A-4D95-B4E3-3A0AC7BE9429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6978FD21-979A-4D95-B4E3-3A0AC7BE9429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6978FD21-979A-4D95-B4E3-3A0AC7BE9429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6978FD21-979A-4D95-B4E3-3A0AC7BE9429}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A9A716D-756F-4088-AF67-FB0108256248}
+	EndGlobalSection
+EndGlobal
